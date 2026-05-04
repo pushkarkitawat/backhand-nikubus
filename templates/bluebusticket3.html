@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrinath Travels Ticket</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #e6f7ff;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .ticket-container {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(to bottom, #ffffff, #e6f5ff);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 120, 215, 0.2);
+            overflow: hidden;
+            border: 1px solid #87ceeb;
+        }
+        
+        .header {
+            background-image: linear-gradient(135deg, #87ceeb, #5cb3ff);
+            padding: 20px;
+            color: white;
+            text-align: left;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 14px;
+            margin: 3px 0;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(135deg, transparent 0%, transparent 50%, #e6f5ff 50%, #e6f5ff 100%);
+            background-size: 20px 20px;
+        }
+        
+        .ticket-content {
+            padding: 25px;
+        }
+        
+        .ticket-info {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .info-box {
+            background-color: #f0f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #5cb3ff;
+        }
+        .info-box h2 {
+            color: #0078d7;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .info-box h3 {
+            color: #0078d7;
+            font-size: 14px;
+            display:inline-flex;
+            margin-bottom: 8px;
+        }
+        
+        .info-box p {
+            display:inline-flex;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .terms {
+            background-color: #f0f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+        
+        .terms h2 {
+            color: #0078d7;
+            margin-bottom: 15px;
+        }
+        
+        .terms ul {
+            padding-left: 20px;
+        }
+        
+        .terms li {
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #444;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 5px;
+            margin-top:30px;
+            border-radius:10px;
+            align-content:center;
+            height:40px;
+            background: linear-gradient(135deg, #87ceeb, #5cb3ff);
+            color: white;
+            font-size: 14px;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        
+        .print-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #87ceeb, #5cb3ff);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 120, 215, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 120, 215, 0.4);
+        }
+        hr {
+            border: none;              /* remove default */
+            border-top: 2px dashed #000; /* thickness + color */
+            margin: 5px 0;            /* optional spacing */
+          }
+          @media print {
+            * {
+              -webkit-print-color-adjust: exact !important; 
+              print-color-adjust: exact !important;
+              color-adjust: exact !important; /* old fallback */
+            }
+          
+            body {
+              background-color: white !important; /* optional */
+              padding: 0;
+            }
+          
+            .ticket-container {
+              background: linear-gradient(to bottom, #ffffff, #e6f5ff) !important;
+              box-shadow: none;
+              border: 1px solid #ccc !important;
+            }
+          
+            .header {
+              background-image: linear-gradient(135deg, #87ceeb, #5cb3ff) !important;
+              color: white !important;
+            }
+          
+            .footer {
+              background: linear-gradient(135deg, #87ceeb, #5cb3ff) !important;
+              color: white !important;
+            }
+          
+            .print-btn {
+              display: none !important;
+            }
+          }
+          
+    </style>
+</head>
+<body>
+    <div class="ticket-container">
+        <div class="header">
+            <h1>Shrinath Travels</h1>
+            
+            <p>Phone: +91 7977397260/+91 932455015</p>
+            <p>Website: https://shrinathmiraroad.com</p>
+        </div>
+        
+        <div class="ticket-content">
+            <div class="ticket-info">
+                <div class="info-box">
+                    <h2>Ticket Details</h2>
+                    <p><h3>PNR :</h3>{{pnr}}</p><br/>
+                    <p><h3>Journey Date :</h3>{{jdate}}</p><br/>
+                    <p><h3>NAME :</h3>{{pname}}-{{gender}}/{{page}}</p><br/>
+                    <p><h3>Source :</h3>{{form_city}} To {{to_city}}</p><br/>
+                    <p><h3>Bus Details :</h3>{{busName}} - {{busNo}}</p><br/>
+                    <p><h3>Seat No :</h3>{{seatNo}}</p><br/>
+                    <p><h3>Booked On :</h3>{{created_at}}</p><br/>
+                    <p><h3>Amount :</h3>{{fare1}}</p>
+
+                </div>
+                
+            </div>
+        
+                
+                <div class="info-box">
+                    <h2>Boarding Point</h2>
+                    <p>{{bpoint}} - 7977397260/9324550015</p>
+                </div>
+                <div class="footer">
+                    <p>Thank you for choosing Shrinath Travels. Have a safe journey!</p>
+                </div>
+            </div>
+            <hr/>
+             <div class="terms">
+                <h2>Terms and Conditions</h2>
+                <ul>
+                    <li>The company undertakes no liability in case of cancellation of trips due to breakdown or for reasons beyond the control of the management.</li>
+                    <li>Ladies are allowed to book next to ladies only. In case of gents booking, they shall be shifted to another seat.</li>
+                    <li><span class="highlight">Management is not responsible for your luggage/baggage.</span></li>
+                    <li>No refund is permissible for cancellation of tickets which have been postponed/preponed.</li>
+                    <li><span class="highlight">For Special Services, Cancellation is not allowed.</span></li>
+                    <li>Station departure is the starting point of the journey, the first boarding point.</li>
+                    <li>If the age of the child is 5 years or More than 5 years Full ticket need to purchase.</li>
+                    <li>Customers are solely responsible for carriage of their handbag / personal belongings.</li>
+                    <li><span class="highlight">Passengers should not carry any goods like weapons, inflammables, firearms, ammunition, drugs, liquor, smuggled goods, cartons and any other articles that are prohibited under law.</span></li>
+                    <li>Maximum baggage allowed per passenger is 15 Kgs and dimension of a Checked-in Baggage must not exceed L 152 cm x W 58 cm x H 101 cm.</li>
+                    <li>The arrival and departure times mentioned on the ticket are only tentative timings.</li>
+                    <li>Changes to the origin and/or destination of travel and customer name changes are not permitted.</li>
+                    <li>Pets and Animals not allowed inside the bus while Journey.</li>
+                    <li>Passenger disturbing the co-passengers is liable to be alighted from the Bus.</li>
+                    <li>Consuming alcohol in the service buses is strictly prohibited.</li>
+                    <li>Eating any kind of outside food except the snacks offered by Shrinath Solitaire is not allowed.</li>
+                </ul>
+            </div> 
+        </div>
+        
+       
+    </div>
+   
+</body>
+</html>
